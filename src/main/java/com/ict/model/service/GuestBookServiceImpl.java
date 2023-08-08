@@ -29,17 +29,15 @@ public class GuestBookServiceImpl implements GuestBookService{
 		// return list;
 		return guestBookDAO.GuestBookList();
 	}
-
-	
 	@Override
 	public int GuestBookUpdate(GuestBookVO gvo) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return guestBookDAO.GuestBookUpdate(gvo);
 	}
 
 	@Override
 	public int GuestBookDelete(String idx) {
-		return 0;
+		return guestBookDAO.GuestBookDelete(idx);
 	}
 
 

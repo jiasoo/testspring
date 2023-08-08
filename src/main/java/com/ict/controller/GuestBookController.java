@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -72,6 +73,30 @@ public class GuestBookController {
 		mv.addObject("vo",vo);
 		return mv;
 	}
+	@PostMapping("/guestbook_edit.Form.do")
+	public ModelAndView getUpdate(GuestBookVO gvo) {
+		ModelAndView mv = new ModelAndView();
+		GuestBookVO vo = guestBookService.GuestBookOneList(gvo.getIdx());
+		// 업데이트 페이지를 가기 위해서는 onelist.jsp의 파라미터를 가지고 가야하는데
+		// 이 정보를 가져가기 위해서는 onelist 메서드 실행 
+		mv.addObject("gvo",gvo);
+		return mv;
+	}
+	@PostMapping("/guestbook_updateok.do")
+	public ModelAndView getGuestBookUpdateOK(GuestBookVO gvo) {
+		guestBookService.GuestBookUpdate(gvo);
+		return new ModelAndView();
+		
+	}
+	@PostMapping("/guestbook_delete.Form.do")
+	public ModelAndView getDelete(@ModelAttribute("idx")String idx) {
+		ModelAndView mv = new ModelAndView("guestbook/delete");
+		GuestBookVO vo = guestBookService.GuestBookOneList(idx);
+		mv.addObject("vo",vo);
+		return mv;
+	}
+	
+	
 		
 
 	

@@ -28,4 +28,11 @@ public class GuestBookDAO {
 	public GuestBookVO GuestBookOneList(String idx) {
 		return sqlSessionTemplate.selectOne("guestbook.onelist", idx);
 	}
+	public int GuestBookUpdate(GuestBookVO gvo) {	
+		return sqlSessionTemplate.update("guestbook.update", gvo);
+	}
+	public int GuestBookDelete(String idx) {
+		return sqlSessionTemplate.delete("guestbook.delete", idx);
+	}
+	
 }

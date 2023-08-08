@@ -23,4 +23,14 @@
 	<select id="onelist" parameterType="String" resultType="gvo"><!--mybatis-config.xml에서 설정 -->
 		select * from guestbook where idx=#{idx}
 	</select>
+	
+	<update id="update" parameterType="gvo">
+		update guestbook
+		set name = #{name}, subject=#{subject}, content=#{content}, email=#{email}
+		where idx = #{idx}
+	</update>
+	
+	<delete id="delete" parameterType="String">
+		delete from guestbook where idx = #{idx}
+	</delete>
 </mapper>

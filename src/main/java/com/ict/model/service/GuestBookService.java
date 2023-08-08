@@ -15,4 +15,5 @@ public interface GuestBookService {
 	int GuestBookUpdate(GuestBookVO gvo);
 	// 삭제
 	int GuestBookDelete(String idx);
+	
 }
